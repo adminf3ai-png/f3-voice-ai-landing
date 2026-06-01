@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "F3 AI" },
+      { name: "description", content: "F3 Voice AI offers advanced active and receptive voice AI solutions for businesses." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "F3 AI" },
+      { property: "og:description", content: "F3 Voice AI offers advanced active and receptive voice AI solutions for businesses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "F3 AI" },
+      { name: "twitter:description", content: "F3 Voice AI offers advanced active and receptive voice AI solutions for businesses." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/adf0f643-2f84-44d9-b1e9-a4aab75b3460/id-preview-9530afec--56be7b39-021c-48d6-9324-7dc61dc7fc0c.lovable.app-1780313835660.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/adf0f643-2f84-44d9-b1e9-a4aab75b3460/id-preview-9530afec--56be7b39-021c-48d6-9324-7dc61dc7fc0c.lovable.app-1780313835660.png" },
     ],
     links: [
       {
