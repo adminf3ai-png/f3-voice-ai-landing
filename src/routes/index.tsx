@@ -288,14 +288,16 @@ function Index() {
       <a
         href="#contato"
         aria-label="Testar IA de voz"
-        className="group fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#facc15] text-black pl-4 pr-5 h-12 shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all"
+        className="group fixed bottom-6 right-6 z-50 inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-background/80 backdrop-blur-xl text-foreground pl-3 pr-4 h-12 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.6)] hover:bg-background/95 hover:-translate-y-0.5 transition-all"
       >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full rounded-full bg-black/40 opacity-75 animate-ping" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black" />
+        <span className="relative flex h-8 w-8 items-center justify-center rounded-xl" style={{ background: "var(--gradient-wave)" }}>
+          <span className="absolute inset-0 rounded-xl opacity-60 blur-md" style={{ background: "var(--gradient-wave)" }} />
+          <Phone className="relative h-4 w-4 text-background" />
         </span>
-        <Phone className="h-4 w-4" />
-        <span className="text-sm font-semibold tracking-wide">Testar IA</span>
+        <span className="flex flex-col leading-tight text-left">
+          <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Demo</span>
+          <span className="text-sm font-semibold">Testar IA</span>
+        </span>
       </a>
     </div>
   );
