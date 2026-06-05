@@ -246,7 +246,7 @@ function Index() {
             { i: ShieldCheck, t: "LGPD e segurança", d: "Dados protegidos, criptografia ponta-a-ponta e auditoria completa." },
             { i: BarChart3, t: "Analytics em tempo real", d: "Dashboards de chamadas, sentimento, conversão e qualidade." },
             { i: Clock, t: "Suporte 8h–17h30", d: "Equipe técnica brasileira em horário comercial estendido." },
-            { i: Headphones, t: "Integração total", d: "PABX, CRM, WhatsApp e seus sistemas internos." },
+            { i: Headphones, t: "Integração com qualquer sistema", d: "Conecta-se de forma nativa a CRMs (HubSpot, Salesforce, RD Station, Pipedrive), sistemas de telefonia/PABX, ERPs, helpdesks, WhatsApp e APIs internas da sua operação." },
           ].map(({ i: Icon, t, d }) => (
             <div key={t} className="rounded-2xl border border-border bg-card p-6 hover:bg-muted/40 transition">
               <Icon className="h-6 w-6 mb-4" style={{ color: "var(--brand-orange)" }} />
