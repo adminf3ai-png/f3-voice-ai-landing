@@ -44,29 +44,31 @@ function CallMeForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-3">
-        <label className="block">
-          <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
-            01 · Nome
+        <label className="group relative block rounded-2xl border border-border bg-background/60 p-4 transition-all focus-within:border-[var(--brand-orange)] focus-within:bg-background focus-within:shadow-[0_0_0_4px_color-mix(in_oklab,var(--brand-orange)_18%,transparent)] hover:border-foreground/30">
+          <span className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1 group-focus-within:text-[var(--brand-orange)]">
+            <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[var(--brand-orange)] text-[9px] font-bold text-background">1</span>
+            Nome
           </span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Como devemos te chamar?"
-            className="w-full h-12 bg-transparent border-0 border-b border-border px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--brand-orange)] transition-colors"
+            className="w-full bg-transparent border-0 p-0 text-base font-medium text-foreground placeholder:text-muted-foreground/50 focus:outline-none"
             autoComplete="name"
           />
         </label>
-        <label className="block">
-          <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
-            02 · Telefone
+        <label className="group relative block rounded-2xl border border-border bg-background/60 p-4 transition-all focus-within:border-[var(--brand-orange)] focus-within:bg-background focus-within:shadow-[0_0_0_4px_color-mix(in_oklab,var(--brand-orange)_18%,transparent)] hover:border-foreground/30">
+          <span className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1 group-focus-within:text-[var(--brand-orange)]">
+            <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[var(--brand-orange)] text-[9px] font-bold text-background">2</span>
+            Telefone
           </span>
           <input
             type="tel"
             value={phone}
             onChange={(e) => setPhone(formatPhone(e.target.value))}
             placeholder="(11) 99999-9999"
-            className="w-full h-12 bg-transparent border-0 border-b border-border px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--brand-orange)] transition-colors"
+            className="w-full bg-transparent border-0 p-0 text-base font-medium text-foreground placeholder:text-muted-foreground/50 focus:outline-none"
             autoComplete="tel"
             inputMode="tel"
           />
