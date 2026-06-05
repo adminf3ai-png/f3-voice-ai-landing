@@ -149,7 +149,7 @@ function Index() {
             por voz.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Agentes de IA de voz <strong className="text-foreground">ativa e receptiva</strong> que ligam, atendem, qualificam e vendem — com naturalidade humana e escala de máquina.
+            Agentes de IA de voz <strong className="text-foreground">ativa e receptiva</strong> que ligam, atendem, qualificam e vendem — com naturalidade humana, escala de máquina e <strong className="text-foreground">integração nativa com seu CRM, PABX e sistemas de telefonia</strong>.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" variant="outline" className="border-border bg-card/50 hover:bg-card text-base h-12 px-8">
@@ -177,6 +177,7 @@ function Index() {
               <li>• Discagem inteligente e automatizada</li>
               <li>• Qualificação BANT em tempo real</li>
               <li>• Transferência para humanos no momento certo</li>
+              <li>• Integração com CRM, PABX e discadores existentes</li>
             </ul>
           </div>
           <div className="group rounded-2xl border border-border bg-card p-8 hover:border-accent/50 transition">
@@ -187,7 +188,7 @@ function Index() {
             <p className="text-muted-foreground mb-6">Atendimento 24/7 para SAC, suporte e vendas inbound. Responde, resolve e encaminha sem fila, sem espera, sem perda de oportunidade.</p>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>• 0 segundos de espera</li>
-              <li>• Integração com CRM e ERP</li>
+              <li>• Integração com CRM, ERP, helpdesk e WhatsApp</li>
               <li>• Histórico e contexto por cliente</li>
             </ul>
           </div>
@@ -245,7 +246,7 @@ function Index() {
             { i: ShieldCheck, t: "LGPD e segurança", d: "Dados protegidos, criptografia ponta-a-ponta e auditoria completa." },
             { i: BarChart3, t: "Analytics em tempo real", d: "Dashboards de chamadas, sentimento, conversão e qualidade." },
             { i: Clock, t: "Suporte 8h–17h30", d: "Equipe técnica brasileira em horário comercial estendido." },
-            { i: Headphones, t: "Integração total", d: "PABX, CRM, WhatsApp e seus sistemas internos." },
+            { i: Headphones, t: "Integração com qualquer sistema", d: "Conecta-se de forma nativa a CRMs (HubSpot, Salesforce, RD Station, Pipedrive), sistemas de telefonia/PABX, ERPs, helpdesks, WhatsApp e APIs internas da sua operação." },
           ].map(({ i: Icon, t, d }) => (
             <div key={t} className="rounded-2xl border border-border bg-card p-6 hover:bg-muted/40 transition">
               <Icon className="h-6 w-6 mb-4" style={{ color: "var(--brand-orange)" }} />
