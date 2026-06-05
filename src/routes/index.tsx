@@ -283,6 +283,20 @@ function Index() {
           <p>© {new Date().getFullYear()} F3ai. Todos os direitos reservados.</p>
         </div>
       </footer>
+
+      {/* Floating minimalist call bubble */}
+      <a
+        href="#contato"
+        aria-label="Testar IA de voz"
+        className="group fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#facc15] text-black pl-4 pr-5 h-12 shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all"
+      >
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-black/40 opacity-75 animate-ping" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black" />
+        </span>
+        <Phone className="h-4 w-4" />
+        <span className="text-sm font-semibold tracking-wide">Testar IA</span>
+      </a>
     </div>
   );
 }
