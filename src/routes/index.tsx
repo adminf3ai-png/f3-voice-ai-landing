@@ -284,10 +284,10 @@ function Index() {
 
           {/* Right: form panel */}
           <div className="relative">
-            <div className="absolute -top-3 left-6 px-3 py-1 bg-background border border-border text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <div className="absolute -top-3 left-6 px-3 py-1 bg-background border border-border rounded-full text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               Linha direta · IA
             </div>
-            <div className="border border-border bg-card p-8 md:p-10">
+            <div className="border border-border bg-card p-8 md:p-10 rounded-3xl">
               <div className="flex items-center justify-between pb-6 mb-6 border-b border-dashed border-border">
                 <div>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">Status</div>
