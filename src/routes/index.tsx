@@ -42,59 +42,54 @@ function CallMeForm() {
   };
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="mx-auto mt-10 max-w-xl rounded-3xl border border-white/15 bg-white/5 backdrop-blur-xl p-6 md:p-8 text-left shadow-[0_25px_80px_-30px_rgba(0,0,0,0.6)]"
-    >
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold">Demonstração Gratuita</h3>
-        <p className="text-sm text-muted-foreground mt-1">
-          Nossa IA vai ligar para você agora mesmo!
-        </p>
+    <form onSubmit={onSubmit} className="space-y-5">
+      <div className="grid sm:grid-cols-2 gap-3">
+        <label className="block">
+          <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+            01 · Nome
+          </span>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Como devemos te chamar?"
+            className="w-full h-12 bg-transparent border-0 border-b border-border px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--brand-orange)] transition-colors"
+            autoComplete="name"
+          />
+        </label>
+        <label className="block">
+          <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+            02 · Telefone
+          </span>
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            placeholder="(11) 99999-9999"
+            className="w-full h-12 bg-transparent border-0 border-b border-border px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--brand-orange)] transition-colors"
+            autoComplete="tel"
+            inputMode="tel"
+          />
+        </label>
       </div>
-      <div className="space-y-3">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Seu nome"
-          className="w-full h-14 rounded-2xl bg-white/10 border border-white/15 px-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#facc15]/60 focus:border-transparent transition"
-          autoComplete="name"
-        />
-        <input
-          type="tel"
-          value={phone}
-          onChange={(e) => setPhone(formatPhone(e.target.value))}
-          placeholder="(xx) xxxxx-xxxx"
-          className="w-full h-14 rounded-2xl bg-white/10 border border-white/15 px-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#facc15]/60 focus:border-transparent transition"
-          autoComplete="tel"
-          inputMode="tel"
-        />
-      </div>
+
       <button
         type="submit"
         disabled={loading}
-        className="group mt-4 w-full inline-flex items-center justify-center gap-3 rounded-full bg-[#facc15] h-14 text-base font-bold text-black shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:bg-[#fde047] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:hover:translate-y-0"
+        className="group relative w-full inline-flex items-center justify-between rounded-none border border-foreground/90 bg-foreground text-background h-14 px-6 text-sm font-semibold uppercase tracking-[0.2em] hover:bg-background hover:text-foreground transition-colors disabled:opacity-60"
       >
-        <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
-        <span className="tracking-wide">
-          {loading ? "ENVIANDO..." : "RECEBER LIGAÇÃO AGORA"}
+        <span className="flex items-center gap-3">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inset-0 rounded-full animate-ping bg-[var(--brand-orange)] opacity-75" />
+            <span className="relative h-2 w-2 rounded-full bg-[var(--brand-orange)]" />
+          </span>
+          {loading ? "Conectando" : "Iniciar chamada"}
+        </span>
+        <span className="flex items-center gap-2">
+          <Phone className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <span aria-hidden>→</span>
         </span>
       </button>
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-        <span className="inline-flex items-center gap-1.5">
-          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-          Ligação em 30 segundos
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-          100% gratuito
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-          Sem compromisso
-        </span>
-      </div>
     </form>
   );
 }
