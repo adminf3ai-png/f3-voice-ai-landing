@@ -76,9 +76,6 @@ function Index() {
               Agendar demonstração
             </Button>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Ou ligue direto: <a href={`tel:${AI_PHONE_NUMBER}`} className="text-foreground font-semibold hover:underline">{AI_PHONE_DISPLAY}</a>
-          </p>
           <VoiceWave className="mt-16 h-16" />
         </div>
       </section>
