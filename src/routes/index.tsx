@@ -149,7 +149,7 @@ function Index() {
             por voz.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Agentes de IA de voz <strong className="text-foreground">ativa e receptiva</strong> que ligam, atendem, qualificam e vendem — com naturalidade humana e escala de máquina.
+            Agentes de IA de voz <strong className="text-foreground">ativa e receptiva</strong> que ligam, atendem, qualificam e vendem — com naturalidade humana, escala de máquina e <strong className="text-foreground">integração nativa com seu CRM, PABX e sistemas de telefonia</strong>.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" variant="outline" className="border-border bg-card/50 hover:bg-card text-base h-12 px-8">
