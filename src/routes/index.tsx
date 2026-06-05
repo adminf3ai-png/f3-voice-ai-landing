@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { VoiceWave } from "@/components/VoiceWave";
 import { Button } from "@/components/ui/button";
-import { PhoneOutgoing, PhoneIncoming, Phone, CheckCircle2, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
+import { PhoneOutgoing, PhoneIncoming, Phone, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
 
 function formatPhone(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 11);
