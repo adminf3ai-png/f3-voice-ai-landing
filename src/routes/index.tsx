@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { VoiceWave } from "@/components/VoiceWave";
 import { Button } from "@/components/ui/button";
-import { PhoneOutgoing, PhoneIncoming, Phone, CheckCircle2, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
+import { PhoneOutgoing, PhoneIncoming, Phone, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
 
 function formatPhone(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -42,59 +42,54 @@ function CallMeForm() {
   };
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="mx-auto mt-10 max-w-xl rounded-3xl border border-white/15 bg-white/5 backdrop-blur-xl p-6 md:p-8 text-left shadow-[0_25px_80px_-30px_rgba(0,0,0,0.6)]"
-    >
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold">Demonstração Gratuita</h3>
-        <p className="text-sm text-muted-foreground mt-1">
-          Nossa IA vai ligar para você agora mesmo!
-        </p>
+    <form onSubmit={onSubmit} className="space-y-5">
+      <div className="grid sm:grid-cols-2 gap-3">
+        <label className="block">
+          <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+            01 · Nome
+          </span>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Como devemos te chamar?"
+            className="w-full h-12 bg-transparent border-0 border-b border-border px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--brand-orange)] transition-colors"
+            autoComplete="name"
+          />
+        </label>
+        <label className="block">
+          <span className="block text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+            02 · Telefone
+          </span>
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            placeholder="(11) 99999-9999"
+            className="w-full h-12 bg-transparent border-0 border-b border-border px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--brand-orange)] transition-colors"
+            autoComplete="tel"
+            inputMode="tel"
+          />
+        </label>
       </div>
-      <div className="space-y-3">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Seu nome"
-          className="w-full h-14 rounded-2xl bg-white/10 border border-white/15 px-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#facc15]/60 focus:border-transparent transition"
-          autoComplete="name"
-        />
-        <input
-          type="tel"
-          value={phone}
-          onChange={(e) => setPhone(formatPhone(e.target.value))}
-          placeholder="(xx) xxxxx-xxxx"
-          className="w-full h-14 rounded-2xl bg-white/10 border border-white/15 px-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#facc15]/60 focus:border-transparent transition"
-          autoComplete="tel"
-          inputMode="tel"
-        />
-      </div>
+
       <button
         type="submit"
         disabled={loading}
-        className="group mt-4 w-full inline-flex items-center justify-center gap-3 rounded-full bg-[#facc15] h-14 text-base font-bold text-black shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:bg-[#fde047] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:hover:translate-y-0"
+        className="group relative w-full inline-flex items-center justify-between rounded-none border border-foreground/90 bg-foreground text-background h-14 px-6 text-sm font-semibold uppercase tracking-[0.2em] hover:bg-background hover:text-foreground transition-colors disabled:opacity-60"
       >
-        <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
-        <span className="tracking-wide">
-          {loading ? "ENVIANDO..." : "RECEBER LIGAÇÃO AGORA"}
+        <span className="flex items-center gap-3">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inset-0 rounded-full animate-ping bg-[var(--brand-orange)] opacity-75" />
+            <span className="relative h-2 w-2 rounded-full bg-[var(--brand-orange)]" />
+          </span>
+          {loading ? "Conectando" : "Iniciar chamada"}
+        </span>
+        <span className="flex items-center gap-2">
+          <Phone className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <span aria-hidden>→</span>
         </span>
       </button>
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-        <span className="inline-flex items-center gap-1.5">
-          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-          Ligação em 30 segundos
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-          100% gratuito
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-          Sem compromisso
-        </span>
-      </div>
     </form>
   );
 }
@@ -258,16 +253,60 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section id="contato" className="mx-auto max-w-5xl px-6 py-24">
-        <div className="relative overflow-hidden rounded-3xl border border-border p-12 md:p-16 text-center" style={{ background: "var(--gradient-hero)", boxShadow: "var(--shadow-glow)" }}>
-          <VoiceWave className="h-12 mb-8" />
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight max-w-2xl mx-auto">
-            Veja Nossa <span className="text-[#facc15]">Demonstração</span> ao Vivo!
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Deixe seu número e receba uma ligação da nossa IA em menos de 30 segundos. Experimente a tecnologia que vai revolucionar seu negócio!
-          </p>
-          <CallMeForm />
+      <section id="contato" className="border-y border-border bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-start">
+          {/* Left: editorial copy */}
+          <div className="lg:sticky lg:top-24">
+            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-muted-foreground">
+              <span className="h-px w-10 bg-[var(--brand-orange)]" />
+              Demonstração ao vivo
+            </div>
+            <h2 className="mt-6 text-4xl md:text-6xl font-black tracking-tight leading-[1.02]">
+              Ouça a IA <br />
+              <span style={{ color: "var(--brand-orange)" }}>em 30 segundos.</span>
+            </h2>
+            <p className="mt-6 text-base text-muted-foreground max-w-md">
+              Sem cadastro, sem comercial. Você preenche, nossa IA disca para o seu número e você conversa com ela de verdade.
+            </p>
+            <div className="mt-10 grid grid-cols-3 gap-px bg-border border border-border max-w-md">
+              {[
+                { v: "30s", l: "para tocar" },
+                { v: "0", l: "compromisso" },
+                { v: "100%", l: "gratuito" },
+              ].map((s) => (
+                <div key={s.l} className="bg-background p-5">
+                  <div className="text-2xl font-black" style={{ color: "var(--brand-orange)" }}>{s.v}</div>
+                  <div className="text-[11px] uppercase tracking-widest text-muted-foreground mt-1">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: form panel */}
+          <div className="relative">
+            <div className="absolute -top-3 left-6 px-3 py-1 bg-background border border-border text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              Linha direta · IA
+            </div>
+            <div className="border border-border bg-card p-8 md:p-10">
+              <div className="flex items-center justify-between pb-6 mb-6 border-b border-dashed border-border">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Status</div>
+                  <div className="mt-1 flex items-center gap-2 text-sm font-semibold">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Agente disponível agora
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Tempo médio</div>
+                  <div className="mt-1 text-sm font-semibold">~ 22s</div>
+                </div>
+              </div>
+              <CallMeForm />
+              <p className="mt-6 text-[11px] text-muted-foreground leading-relaxed">
+                Ao enviar você concorda em receber uma ligação de teste da F3ai. Seus dados não são compartilhados — LGPD garantida.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -288,16 +327,14 @@ function Index() {
       <a
         href="#contato"
         aria-label="Testar IA de voz"
-        className="group fixed bottom-6 right-6 z-50 inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-background/80 backdrop-blur-xl text-foreground pl-3 pr-4 h-12 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.6)] hover:bg-background/95 hover:-translate-y-0.5 transition-all"
+        className="group fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#facc15] text-black pl-4 pr-5 h-12 shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all"
       >
-        <span className="relative flex h-8 w-8 items-center justify-center rounded-xl" style={{ background: "var(--gradient-wave)" }}>
-          <span className="absolute inset-0 rounded-xl opacity-60 blur-md" style={{ background: "var(--gradient-wave)" }} />
-          <Phone className="relative h-4 w-4 text-background" />
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-black/40 opacity-75 animate-ping" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black" />
         </span>
-        <span className="flex flex-col leading-tight text-left">
-          <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Demo</span>
-          <span className="text-sm font-semibold">Testar IA</span>
-        </span>
+        <Phone className="h-4 w-4" />
+        <span className="text-sm font-semibold tracking-wide">Testar IA</span>
       </a>
     </div>
   );
