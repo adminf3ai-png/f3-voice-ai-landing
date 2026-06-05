@@ -177,6 +177,7 @@ function Index() {
               <li>• Discagem inteligente e automatizada</li>
               <li>• Qualificação BANT em tempo real</li>
               <li>• Transferência para humanos no momento certo</li>
+              <li>• Integração com CRM, PABX e discadores existentes</li>
             </ul>
           </div>
           <div className="group rounded-2xl border border-border bg-card p-8 hover:border-accent/50 transition">
@@ -187,7 +188,7 @@ function Index() {
             <p className="text-muted-foreground mb-6">Atendimento 24/7 para SAC, suporte e vendas inbound. Responde, resolve e encaminha sem fila, sem espera, sem perda de oportunidade.</p>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>• 0 segundos de espera</li>
-              <li>• Integração com CRM e ERP</li>
+              <li>• Integração com CRM, ERP, helpdesk e WhatsApp</li>
               <li>• Histórico e contexto por cliente</li>
             </ul>
           </div>
