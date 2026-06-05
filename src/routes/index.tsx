@@ -1,20 +1,101 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import { VoiceWave } from "@/components/VoiceWave";
 import { Button } from "@/components/ui/button";
-import { PhoneOutgoing, PhoneIncoming, Phone, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
+import { PhoneOutgoing, PhoneIncoming, Phone, CheckCircle2, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
 
-const AI_PHONE_NUMBER = "1920420049";
-const AI_PHONE_DISPLAY = "(192) 042-0049";
+function formatPhone(value: string) {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10)
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
 
-function CallAIButton({ className = "" }: { className?: string }) {
+function CallMeForm() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const digits = phone.replace(/\D/g, "");
+    if (name.trim().length < 2) {
+      toast.error("Informe seu nome completo");
+      return;
+    }
+    if (digits.length < 10) {
+      toast.error("Informe um telefone válido com DDD");
+      return;
+    }
+    setLoading(true);
+    try {
+      await new Promise((r) => setTimeout(r, 800));
+      toast.success("Tudo certo! Nossa IA vai te ligar em instantes.");
+      setName("");
+      setPhone("");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <a
-      href={`tel:${AI_PHONE_NUMBER}`}
-      className={`group inline-flex items-center justify-center gap-3 rounded-full bg-[#facc15] px-8 h-14 text-base font-bold text-black shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:bg-[#fde047] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all ${className}`}
+    <form
+      onSubmit={onSubmit}
+      className="mx-auto mt-10 max-w-xl rounded-3xl border border-white/15 bg-white/5 backdrop-blur-xl p-6 md:p-8 text-left shadow-[0_25px_80px_-30px_rgba(0,0,0,0.6)]"
     >
-      <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
-      <span className="tracking-wide">LIGAR PARA A IA AGORA</span>
-    </a>
+      <div className="text-center mb-6">
+        <h3 className="text-2xl font-bold">Demonstração Gratuita</h3>
+        <p className="text-sm text-muted-foreground mt-1">
+          Nossa IA vai ligar para você agora mesmo!
+        </p>
+      </div>
+      <div className="space-y-3">
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Seu nome"
+          className="w-full h-14 rounded-2xl bg-white/10 border border-white/15 px-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#facc15]/60 focus:border-transparent transition"
+          autoComplete="name"
+        />
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(formatPhone(e.target.value))}
+          placeholder="(xx) xxxxx-xxxx"
+          className="w-full h-14 rounded-2xl bg-white/10 border border-white/15 px-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#facc15]/60 focus:border-transparent transition"
+          autoComplete="tel"
+          inputMode="tel"
+        />
+      </div>
+      <button
+        type="submit"
+        disabled={loading}
+        className="group mt-4 w-full inline-flex items-center justify-center gap-3 rounded-full bg-[#facc15] h-14 text-base font-bold text-black shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:bg-[#fde047] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:hover:translate-y-0"
+      >
+        <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
+        <span className="tracking-wide">
+          {loading ? "ENVIANDO..." : "RECEBER LIGAÇÃO AGORA"}
+        </span>
+      </button>
+      <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5">
+          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+          Ligação em 30 segundos
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+          100% gratuito
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+          Sem compromisso
+        </span>
+      </div>
+    </form>
   );
 }
 
@@ -71,9 +152,8 @@ function Index() {
             Agentes de IA de voz <strong className="text-foreground">ativa e receptiva</strong> que ligam, atendem, qualificam e vendem — com naturalidade humana e escala de máquina.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <CallAIButton />
             <Button size="lg" variant="outline" className="border-border bg-card/50 hover:bg-card text-base h-12 px-8">
-              Agendar demonstração
+              <a href="#contato">Agendar demonstração</a>
             </Button>
           </div>
           <VoiceWave className="mt-16 h-16" />
@@ -181,17 +261,12 @@ function Index() {
         <div className="relative overflow-hidden rounded-3xl border border-border p-12 md:p-16 text-center" style={{ background: "var(--gradient-hero)", boxShadow: "var(--shadow-glow)" }}>
           <VoiceWave className="h-12 mb-8" />
           <h2 className="text-4xl md:text-5xl font-black tracking-tight max-w-2xl mx-auto">
-            Pronto para colocar a F3ai pra falar pelo seu negócio?
+            Veja Nossa <span className="text-[#facc15]">Demonstração</span> ao Vivo!
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Agende uma demonstração gratuita e ouça seu próprio agente de voz em menos de 15 minutos.
+            Deixe seu número e receba uma ligação da nossa IA em menos de 30 segundos. Experimente a tecnologia que vai revolucionar seu negócio!
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <CallAIButton />
-            <a href="mailto:contato@f3ai.com.br" className="text-sm text-muted-foreground hover:text-foreground transition">
-              contato@f3ai.com.br
-            </a>
-          </div>
+          <CallMeForm />
         </div>
       </section>
 
