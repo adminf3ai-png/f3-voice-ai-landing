@@ -78,12 +78,12 @@ function CallMeForm() {
       <button
         type="submit"
         disabled={loading}
-        className="group relative w-full inline-flex items-center justify-between rounded-none border border-foreground/90 bg-foreground text-background h-14 px-6 text-sm font-semibold uppercase tracking-[0.2em] hover:bg-background hover:text-foreground transition-colors disabled:opacity-60"
+        className="group relative w-full inline-flex items-center justify-between rounded-2xl border border-[var(--brand-orange)] bg-[var(--brand-orange)] text-background h-14 px-6 text-sm font-semibold uppercase tracking-[0.2em] shadow-[0_10px_30px_-10px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)] hover:shadow-[0_15px_40px_-10px_color-mix(in_oklab,var(--brand-orange)_90%,transparent)] hover:-translate-y-0.5 transition-all disabled:opacity-60"
       >
         <span className="flex items-center gap-3">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inset-0 rounded-full animate-ping bg-[var(--brand-orange)] opacity-75" />
-            <span className="relative h-2 w-2 rounded-full bg-[var(--brand-orange)]" />
+            <span className="absolute inset-0 rounded-full animate-ping bg-background opacity-75" />
+            <span className="relative h-2 w-2 rounded-full bg-background" />
           </span>
           {loading ? "Conectando" : "Iniciar chamada"}
         </span>
