@@ -1,7 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { VoiceWave } from "@/components/VoiceWave";
 import { Button } from "@/components/ui/button";
-import { PhoneOutgoing, PhoneIncoming, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
+import { PhoneOutgoing, PhoneIncoming, Phone, Bot, Clock, ShieldCheck, Zap, BarChart3, Headphones } from "lucide-react";
+
+const AI_PHONE_NUMBER = "1920420049";
+const AI_PHONE_DISPLAY = "(192) 042-0049";
+
+function CallAIButton({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href={`tel:${AI_PHONE_NUMBER}`}
+      className={`group inline-flex items-center justify-center gap-3 rounded-full bg-[#facc15] px-8 h-14 text-base font-bold text-black shadow-[0_10px_30px_-10px_rgba(250,204,21,0.7)] hover:bg-[#fde047] hover:shadow-[0_15px_40px_-10px_rgba(250,204,21,0.9)] hover:-translate-y-0.5 transition-all ${className}`}
+    >
+      <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
+      <span className="tracking-wide">LIGAR PARA A IA AGORA</span>
+    </a>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,13 +71,14 @@ function Index() {
             Agentes de IA de voz <strong className="text-foreground">ativa e receptiva</strong> que ligam, atendem, qualificam e vendem — com naturalidade humana e escala de máquina.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base h-12 px-8">
+            <CallAIButton />
+            <Button size="lg" variant="outline" className="border-border bg-card/50 hover:bg-card text-base h-12 px-8">
               Agendar demonstração
             </Button>
-            <Button size="lg" variant="outline" className="border-border bg-card/50 hover:bg-card text-base h-12 px-8">
-              Ouvir um agente
-            </Button>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Ou ligue direto: <a href={`tel:${AI_PHONE_NUMBER}`} className="text-foreground font-semibold hover:underline">{AI_PHONE_DISPLAY}</a>
+          </p>
           <VoiceWave className="mt-16 h-16" />
         </div>
       </section>
@@ -174,9 +190,7 @@ function Index() {
             Agende uma demonstração gratuita e ouça seu próprio agente de voz em menos de 15 minutos.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base h-12 px-8">
-              Agendar demonstração
-            </Button>
+            <CallAIButton />
             <a href="mailto:contato@f3ai.com.br" className="text-sm text-muted-foreground hover:text-foreground transition">
               contato@f3ai.com.br
             </a>
