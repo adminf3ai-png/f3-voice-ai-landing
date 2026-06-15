@@ -32,15 +32,10 @@ function CallMeForm() {
     }
     setLoading(true);
     try {
-      const res = await fetch("https://ia.discador.net/api/ura", {
+      const res = await fetch("/api/call", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          assistenteId: "17d6b0a1-1d6a-4f7d-9bf9-9c3b56fed839",
-          phoneNumberId: "ee0500e4-6514-4627-a158-b4000533a1d4",
-          telefone: digits,
-          token: "c658ea47-5b77-47b3-8953-08c0b81879de",
-        }),
+        body: JSON.stringify({ telefone: digits }),
       });
       if (!res.ok) throw new Error(`Falha (${res.status})`);
       toast.success("Tudo certo! Nossa IA vai te ligar em instantes.");
